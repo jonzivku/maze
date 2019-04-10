@@ -12,7 +12,6 @@ class Maze{
   Maze(int=-1);
   ~Maze();
 
-  
   void mazeGen();//testing as public  
   void print();
  private:
@@ -28,7 +27,7 @@ class Maze{
   int below(int i){ return i+n; }
   int left(int i){ return i-1; }
   int above(int i){ return i-n; }
-  bool flip(){ return std::rand()%3 == 1; }
+  bool flip(){ return std::rand()%2 == 1; }
   unsigned char *maze; //holds the maze
   int *order; // holds the order for randomizing the maze
   DisjointSet *A;

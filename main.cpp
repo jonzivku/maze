@@ -1,7 +1,6 @@
 // Jon Zivku, jzivku, jonzivku@me.com, main.cpp, A06 Maze Generation
 
-// refactor DisjointSet::unionFind to bool, so that it can be used in Maze::connect
-
+// needs to continue until all elements are in the same set
 #include <iostream>
 #include <cstdlib>
 #include <cctype>

@@ -21,10 +21,13 @@ DisjointSet::~DisjointSet(){
   delete [] rank;
 }
 
-void DisjointSet::unionFind(int x, int y){
+bool DisjointSet::unionFind(int x, int y){
   if( x>=size || y>=size || x<0 || y<0 )
-    return;
+    return false;
+  if(find(x) == find(y))
+     return false;
   link(find(x), find(y));
+  return true;
 }
 
 int DisjointSet::find(int x){

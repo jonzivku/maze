@@ -9,10 +9,10 @@ class DisjointSet{
 
  
  
-  void unionFind(int x, int y);
+  bool unionFind(int x, int y);
   // unions set containing x with set containing y.
   //pre-cond: x and y are elements from [0,size).
-  //postcond: if x and y are in different sets, the sets have been unioned, return true. if not, no change, return false.
+  //postcond: if x and y are in different sets, the sets have been unioned; return true. if not, no change; return false.
   
   int find(int x);
   //pre-cond: x is an element from [0,size)

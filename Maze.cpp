@@ -39,6 +39,7 @@ void Maze::mazeGen(){
   for(int i = nxn-1; i>=0; i--){
     connect(order[i]);
   }
+  
 }
 
 void Maze::print(){
@@ -82,26 +83,22 @@ void Maze::shuffleOrder(){
 
 void Maze::connect(int i){
   //look right
-  if( flip() && right(i)%n != 0 ){
-    A->unionFind(i, right(i) );
+  if( flip() && right(i)%n != 0 && A->unionFind(i, right(i) ) ){
     maze[i]        = maze[i]        & 0x0E;
     maze[right(i)] = maze[right(i)] & 0x0B;
   }
   //look down
-  if( flip() && below(i) < nxn ){ //is below in bounds?
-    A->unionFind(i, below(i) );
+  if( flip() && below(i) < nxn && A->unionFind(i, below(i) ) ){ //is below in bounds?
     maze[i]        = maze[i]        & 0x0D;
     maze[below(i)] = maze[below(i)] & 0x07;
   }
   // look left
-  if( flip() && (left(i)+1)%n != 0 ){ 
-    A->unionFind(i, left(i) );
+  if( flip() && (left(i)+1)%n != 0 && A->unionFind(i, left(i) ) ){ 
     maze[i]       = maze[i]       & 0x0B;
     maze[left(i)] = maze[left(i)] & 0x0E;
   }
   // look above
-  if( flip() && above(i)>0 ){ //if above exists
-    A->unionFind(i, above(i) );
+  if( flip() && above(i)>0 && A->unionFind(i, right(i) ) ){ //if above exists
     maze[i]        = maze[i]        & 0x07;
     maze[above(i)] = maze[above(i)] & 0x0D;
   }
