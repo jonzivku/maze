@@ -6,6 +6,7 @@
 
 DisjointSet::DisjointSet(int pSize){
   size = pSize;
+  numSets = pSize;
   parent = new int[size];
   rank = new int[size];
   for(int i = 0; i < size; i++){
@@ -25,6 +26,8 @@ bool DisjointSet::unionFind(int x, int y){
   if(find(x) == find(y))
      return false;
   link(find(x), find(y));
+  numSets--;
+  // std::cout << numSets << std::endl; //testing
   return true;
 }
 
@@ -40,17 +43,17 @@ int DisjointSet::find(int x){
 void DisjointSet::print(){
   std::cout << std::setw(8) << "elemnt:\t";
   for(int i = 0; i < size; i++)
-    std::cout << std::setw(3) << i;  
+    std::cout << std::setw(3) << i;
   std::cout << std::endl;
 
-  std::cout << std::setw(8) << "parent:\t";  
+  std::cout << std::setw(8) << "parent:\t";
   for(int i = 0; i < size; i++)
-    std::cout << std::setw(3) << parent[i];  
+    std::cout << std::setw(3) << parent[i];
   std::cout << std::endl;
-  
-  std::cout << std::setw(8) << "rank:  \t";  
+
+  std::cout << std::setw(8) << "rank:  \t";
   for(int i = 0; i < size; i++)
-    std::cout << std::setw(3) << rank[i];  
+    std::cout << std::setw(3) << rank[i];
   std::cout << std::endl << std::endl;
 }
 

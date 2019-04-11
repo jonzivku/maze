@@ -6,7 +6,7 @@
 #include "Maze.h"
 
 Maze::Maze(int pN){
-  //std::srand( std::time( 0));
+  std::srand( std::time( 0));
   if(pN < 3)
     pN = 3;
   n = pN;
@@ -14,8 +14,7 @@ Maze::Maze(int pN){
   A = new DisjointSet(nxn);
   order = new int[nxn];
   maze = new unsigned char[nxn];
-
-  mazeGen(); //testing
+  mazeGen();
 }
 
 Maze::~Maze(){
@@ -40,7 +39,7 @@ void Maze::check(){
     if(check != A->find(i)){
       std::cout << "Error at index " << i << std::endl;
       error++;
-    }  
+    }
     check = A->find(i);
   }
   std::cout << "Check ended with " << error << " errors" << std::endl;
@@ -61,13 +60,14 @@ void Maze::mazeGen(){
   for(int i=0; i<nxn; i++){
     order[i] = i;
     maze[i] = 0x0F;
-  }  
+  }
   // set beginning and end;
   maze[0] = 0x0B;
   maze[nxn-1] = 0x0E;
 
   shuffleOrder();
-  for(int i = 0; i < nxn; i++){
+  //with numSets
+  for(int i = 0; i < nxn && A->getSets() > 1; i++){
     connect(order[i]);
   }
 }
