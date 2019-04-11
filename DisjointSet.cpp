@@ -4,8 +4,6 @@
 #include <iomanip>
 #include "DisjointSet.h"
 
-
-
 DisjointSet::DisjointSet(int pSize){
   size = pSize;
   parent = new int[size];
@@ -54,7 +52,6 @@ void DisjointSet::print(){
   for(int i = 0; i < size; i++)
     std::cout << std::setw(3) << rank[i];  
   std::cout << std::endl << std::endl;
-  
 }
 
 void DisjointSet::link(int x, int y){
@@ -68,5 +65,4 @@ void DisjointSet::link(int x, int y){
       rank[y]++;
     }
   }
-
 }

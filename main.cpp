@@ -1,50 +1,26 @@
 // Jon Zivku, jzivku, jonzivku@me.com, main.cpp, A06 Maze Generation
+/*
+  Programming for generating navigable mazes. Implementation of the mazes is with a disjoint set w/ Union Find data structure. 
+  Comments: this was a nice & straight-forward problem, without the complications of IO that I had with the last assignment.
+  I'd like to play around with the connect function to see if I can get some neat structure.
+  Status: compiling/working/tested up to 1000x1000
+ */
 
-// needs to continue until all elements are in the same set
 #include <iostream>
 #include <cstdlib>
 #include <cctype>
-
 #include "Maze.h"
 
-using std::cout;
-
 int main(int argc, char* argv[]){
-
   if(argc != 2 || !std::isdigit(argv[1][0]) || std::atoi(argv[1])<3 ){
     std::cerr << "USAGE:\t./p6 n , where n is a natural number 3 or greater." << std::endl;
     std::cerr << "\tPrints a 'n x n' maze." << std::endl;
     return -1;
   }
-   
   int size = std::atoi(argv[1]);  
-
   Maze A(size);
-
-  
   A.print();
-  
-
-  /*
-  //testing
-  std::cout << size << std::endl;
-
-  DisjointSet A(size);
-
-  A.unionFind(0,1);
-  A.print();
-  
-  A.unionFind(2,0);
-  A.print();                                                                              
-
-  A.unionFind(3,4);
-  A.print();                                                                                         
-
-  A.unionFind(1,3);
-  A.print();
-
-  return 0;
-  */
+  // A.check();
 }
 
 
