@@ -5,6 +5,8 @@
 #include "DisjointSet.h"
 
 DisjointSet::DisjointSet(int pSize){
+  if(pSize < 0)
+    pSize = -pSize;
   size = pSize;
   numSets = pSize;
   parent = new int[size];
@@ -58,8 +60,6 @@ void DisjointSet::print(){
 }
 
 void DisjointSet::link(int x, int y){
-  if( x==y )
-    return;
   if( rank[x] > rank[y]){
     parent[y] = x;
   }else{
